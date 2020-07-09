@@ -1,0 +1,54 @@
+$primary: #7952b3;
+$secondary: #ffe484;
+$success: #52b382;
+$danger: #b35252;
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+h1, .h1 {
+  font-size: 4rem;
+}
+
+h2, .h2 {
+  font-size: 3rem;
+}
+
+h3, .h3 {
+  font-size: 2rem;
+}
+
+h4, .h4 {
+  font-size: 1.5rem;
+}
+
+.card {
+  height: 24rem;
+}
+
+.card-text {
+  height: 17rem;
+}
+
+.card-text ul {
+  height: 15rem;
+}
+
+@include media-breakpoint-up(xl) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+.position-absolute {
+  &.bottom-button { bottom: 1rem; }
+
+  &.bottom-link {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  &.action-buttons {
+    right: 0.5rem;
+    top: -0.5rem;
+  }
+}

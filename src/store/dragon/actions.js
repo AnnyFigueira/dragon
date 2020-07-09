@@ -1,5 +1,4 @@
 import DragonService from '../../services/Dragon';
-import { useApiRequest } from '../../utils/hooks';
 
 export const LOADING_DRAGONS = 'LOADING_DRAGONS';
 export function loadingDragons() {
@@ -28,9 +27,10 @@ export const getDragons = () => {
   return async dispatch => {
     dispatch(loadingDragons());
     try {
-      const [isLoaded, response, error] = useApiRequest({Service: DragonService, action: 'getAll'}, null, 'Failed to fetch data', false)
-      if (error) throw new Error({ message: 'Não foi possível buscar os dragões' });
-      if (isLoaded) dispatch(successGetDragons(response.data));
+      const response = await new DragonService().getAll();
+
+      if (!response.data) throw new Error({ message: 'Não foi possível localizar nenhuma loja' });
+      dispatch(successGetDragons(response.data));
     } catch (error) {
       dispatch(errorGetDragons(error.message));
     }

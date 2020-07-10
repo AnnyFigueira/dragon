@@ -19,7 +19,7 @@ export const reducer = (state, action) => {
     case 'INDEX_DRAGONS': 
       return {
         ...state, 
-        dragons: [...state.dragons, ...action.dragons]
+        dragons: [...action.dragons]
       };
     case 'CREATE_DRAGON': 
       return {

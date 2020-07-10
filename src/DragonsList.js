@@ -56,13 +56,13 @@ export default function DragonsList() {
   }, []);
   return (
     <section className="container py-5">
-      <h1> Listar Dragões </h1>
+      <h1 className="h2"> Lista de Dragões </h1>
       <div className="table-responsive">
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>Nome</th>
-              <th>Tipo</th>
+              <th className="input-column">Nome</th>
+              <th className="input-column">Tipo</th>
               <th className="text-right">Salvar</th>
               <th className="text-right">Remover</th>
               <th className="text-right">Ver mais</th>

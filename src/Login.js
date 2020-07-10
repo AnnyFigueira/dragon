@@ -24,7 +24,6 @@ export default function Login() {
       <div className="row d-flex justify-content-center">
         <div className="card col-md-4">
           <div className="card-body">
-            <h1 className="card-title">Bem vindo </h1>
             <form onSubmit={login}>
               <div className="form-outline mb-4">
                 <label className="form-label"> Email </label>

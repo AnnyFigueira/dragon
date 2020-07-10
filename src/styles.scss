@@ -1,5 +1,5 @@
 $primary: #7952b3;
-$secondary: #ffe484;
+$secondary: #646361;
 $success: #52b382;
 $danger: #b35252;
 
@@ -21,18 +21,6 @@ h4, .h4 {
   font-size: 1.5rem;
 }
 
-.card {
-  height: 24rem;
-}
-
-.card-text {
-  height: 17rem;
-}
-
-.card-text ul {
-  height: 15rem;
-}
-
 @include media-breakpoint-up(xl) {
   .container {
     max-width: 960px;
@@ -51,4 +39,8 @@ h4, .h4 {
     right: 0.5rem;
     top: -0.5rem;
   }
+}
+
+.input-column {
+  min-width: 250px;
 }

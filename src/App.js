@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Store, {reducer, initialState} from './Store';
-
+import Header from './Header';
 import DragonsList from './DragonsList';
 import DragonForm from './DragonForm';
 import DragonPage from './DragonPage';
@@ -14,6 +14,7 @@ function App() {
       <Store.Provider value={{ state, dispatch }}>
         <Router>
         <div className="App">
+          {state.logged && <Header/> }
           <Switch>
             <Route path="/login" render={() => !state.logged ? <Login /> : <Redirect to="/" />} />
             <Route path="/dragon/new" render={() => state.logged ? <DragonForm /> : <Redirect to="/login" />} />

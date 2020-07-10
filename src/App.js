@@ -1,21 +1,28 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import setupStore from './store/setup';
-import DragonList from './screens/DragonList';
-import DragonForm from './screens/DragonForm';
+import React, { useReducer } from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import Store, {reducer, initialState} from './Store';
+
+import DragonsList from './DragonsList';
+import DragonForm from './DragonForm';
+import DragonPage from './DragonPage';
+import Login from './Login';
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div className="App">
-      <Provider store={setupStore()}>
+      <Store.Provider value={{ state, dispatch }}>
         <Router>
+        <div className="App">
           <Switch>
-            <Route path="/dragon/new" component={DragonForm} />    
-            <Route path="/" component={DragonList} />
+            <Route path="/login" render={() => !state.logged ? <Login /> : <Redirect to="/" />} />
+            <Route path="/dragon/new" render={() => state.logged ? <DragonForm /> : <Redirect to="/login" />} />
+            <Route path="/dragon/:id" render={() => state.logged ? <DragonPage /> : <Redirect to="/login" />} />
+            <Route path="/" render={() => state.logged ? <DragonsList /> : <Redirect to="/login" />} />
           </Switch>
+        </div>
         </Router>
-      </Provider>
+      </Store.Provider>
     </div>
   );
 }
